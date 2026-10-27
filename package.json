@@ -1,0 +1,63 @@
+{
+  "name": "global-operations-command",
+  "version": "1.0.0",
+  "description": "Grand Strategy Military Simulation System",
+  "productName": "Global Operations Command",
+  "author": "Global Operations Command",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win",
+    "build:win": "electron-builder --win",
+    "build:win:dir": "electron-builder --win dir",
+    "build:mac": "electron-builder --mac"
+  },
+  "build": {
+    "appId": "com.globaloperationscommand.game",
+    "productName": "Global Operations Command",
+    "asar": true,
+    "directories": {
+      "output": "dist-patched"
+    },
+    "files": [
+      "electron-main.js",
+      "index.html",
+      "css/**/*",
+      "js/**/*",
+      "data/**/*",
+      "node_modules/leaflet/**/*",
+      "package.json",
+      "!dist/**",
+      "!*.log"
+    ],
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "win": {
+      "target": [
+        "nsis",
+        "dir"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Global Operations Command"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.strategy-games"
+    }
+  },
+  "devDependencies": {
+    "electron": "^42.11.18",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4"
+  }
+}

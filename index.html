@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>DCS Strategic Command</title>
+    
+    <link rel="stylesheet" href="./node_modules/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+</head>
+<body>
+
+    <div id="top-hud">
+        <div class="hud-title">// THEATER: CAUCASUS // STRATEGIC COMMAND</div>
+        <div class="time-controls">
+            <div id="game-timer" aria-live="off">TIME // 00:00:00</div>
+            <button type="button" class="time-button" data-time-scale="1" aria-pressed="true">1x</button>
+            <button type="button" class="time-button" data-time-scale="2" aria-pressed="false">2x</button>
+            <button type="button" class="time-button" data-time-scale="4" aria-pressed="false">4x</button>
+            <button type="button" id="pause-game" aria-pressed="false">PAUSE</button>
+        </div>
+        <div class="campaign-controls">
+            <div id="campaign-score" class="campaign-score" aria-live="off">BLUE VALUE 0 // COST 0 | RED VALUE 0 // COST 0</div>
+            <button type="button" id="save-campaign" class="time-button" hidden>SAVE</button>
+            <button type="button" id="load-campaign" class="time-button" hidden>LOAD</button>
+        </div>
+    </div>
+
+    <div id="map"></div>
+    <div id="map-status" class="map-status" role="status" aria-live="polite">LOADING MAP TILES...</div>
+    <div id="startup-error" class="startup-error" role="alert" hidden></div>
+    <div id="game-message" class="game-message" role="status" aria-live="polite" hidden></div>
+    <div id="scenario-screen" class="scenario-screen">
+        <section class="scenario-card" aria-labelledby="scenario-title">
+            <p class="scenario-kicker">GLOBAL OPERATIONS COMMAND // PHASE 7</p>
+            <h1 id="scenario-title">SELECT INITIAL THEATER CONTROL</h1>
+            <p class="scenario-copy">Choose your Blue Force starting airfields. Neutral bases can be secured before deployment.</p>
+            <div id="scenario-airfields" class="scenario-airfields"></div>
+            <label class="scenario-home-label" for="scenario-home">PRIMARY OPERATING BASE</label>
+            <select id="scenario-home"></select>
+            <p class="scenario-copy">All Blue Force flights and ground movement are player-directed; enemy operations remain autonomous.</p>
+            <button type="button" id="start-campaign" class="primary-button">DEPLOY BLUE FORCE</button>
+            <button type="button" id="resume-campaign" class="primary-button" hidden>RESUME SAVED CAMPAIGN</button>
+        </section>
+    </div>
+
+    <script src="./node_modules/leaflet/dist/leaflet.js"></script>
+
+    <!-- メインスクリプト -->
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>
